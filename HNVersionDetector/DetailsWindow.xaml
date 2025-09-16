@@ -1,0 +1,185 @@
+﻿<Window x:Class="HelloNeighborVersionDetector.DetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Details"
+        Height="180"
+        Width="400"
+        WindowStartupLocation="CenterOwner"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ShowInTaskbar="True">
+    <Window.Resources>
+        <!-- Minimize Animation -->
+        <Storyboard x:Key="MinimizeAnimation">
+            <DoubleAnimation Storyboard.TargetName="RootContainer"
+                           Storyboard.TargetProperty="Opacity"
+                           From="1" To="0.5"
+                           Duration="0:0:0.15"
+                           AutoReverse="False"/>
+            <DoubleAnimation Storyboard.TargetName="RootContainer"
+                           Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                           From="1" To="0.9"
+                           Duration="0:0:0.15"
+                           AutoReverse="False"/>
+            <DoubleAnimation Storyboard.TargetName="RootContainer"
+                           Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                           From="1" To="0.9"
+                           Duration="0:0:0.15"
+                           AutoReverse="False"/>
+        </Storyboard>
+        <!-- Close Animation -->
+        <Storyboard x:Key="CloseAnimation">
+            <DoubleAnimation Storyboard.TargetName="RootContainer"
+                           Storyboard.TargetProperty="Opacity"
+                           From="1" To="0"
+                           Duration="0:0:0.15"/>
+            <DoubleAnimation Storyboard.TargetName="RootContainer"
+                           Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                           From="1" To="0.3"
+                           Duration="0:0:0.15"/>
+            <DoubleAnimation Storyboard.TargetName="RootContainer"
+                           Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                           From="1" To="0.3"
+                           Duration="0:0:0.15"/>
+        </Storyboard>
+        <!-- Restore Animation -->
+        <Storyboard x:Key="RestoreAnimation">
+            <DoubleAnimation Storyboard.TargetName="RootContainer"
+                           Storyboard.TargetProperty="Opacity"
+                           To="1"
+                           Duration="0:0:0.1"/>
+            <DoubleAnimation Storyboard.TargetName="RootContainer"
+                           Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                           To="1"
+                           Duration="0:0:0.1"/>
+            <DoubleAnimation Storyboard.TargetName="RootContainer"
+                           Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                           To="1"
+                           Duration="0:0:0.1"/>
+        </Storyboard>
+    </Window.Resources>
+    <Window.RenderTransform>
+        <ScaleTransform ScaleX="1" ScaleY="1" CenterX="200" CenterY="90"/>
+    </Window.RenderTransform>
+    <!-- Root container for animations -->
+    <Border x:Name="RootContainer" CornerRadius="5" Background="#2D2D2D">
+        <Border.RenderTransform>
+            <ScaleTransform x:Name="RootContainerScale" ScaleX="1" ScaleY="1"/>
+        </Border.RenderTransform>
+        <!-- Rest of your XAML remains exactly the same -->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!-- Title Bar -->
+            <Border Grid.Row="0" Background="#1F1F1F" CornerRadius="5,5,0,0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <!-- Title -->
+                    <TextBlock Grid.Column="0"
+                               Text="Details"
+                               Foreground="White"
+                               FontSize="14"
+                               FontWeight="Bold"
+                               VerticalAlignment="Center"
+                               Margin="10,5"
+                               MouseLeftButtonDown="TitleBar_MouseLeftButtonDown"/>
+                    <!-- Window Controls -->
+                    <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button Content="─"
+                                FontSize="14"
+                                FontWeight="Bold"
+                                Width="30"
+                                Height="25"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                Foreground="White"
+                                Click="MinimizeButton_Click"
+                                ToolTip="Minimize"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button Content="✕"
+                                FontSize="12"
+                                FontWeight="Bold"
+                                Width="30"
+                                Height="25"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                Foreground="White"
+                                Click="CloseButton_Click"
+                                ToolTip="Close"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+            <!-- Details Content -->
+            <StackPanel Grid.Row="1" Margin="10">
+                <StackPanel Orientation="Horizontal" Margin="0,8">
+                    <TextBlock Text="Timestamp: "
+                               Foreground="White"
+                               FontSize="14"
+                               VerticalAlignment="Center"/>
+                    <TextBlock x:Name="TimestampText"
+                               Foreground="White"
+                               FontSize="14"
+                               VerticalAlignment="Center"/>
+                    <Button x:Name="CopyTimestampButton"
+                            Content="📋"
+                            FontSize="12"
+                            Margin="10,0,0,0"
+                            Padding="2,0"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Foreground="White"
+                            Click="CopyTimestamp_Click"
+                            ToolTip="Copy to clipboard"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,8">
+                    <TextBlock Text="Memory Size: "
+                               Foreground="White"
+                               FontSize="14"
+                               VerticalAlignment="Center"/>
+                    <TextBlock x:Name="MemorySizeText"
+                               Foreground="White"
+                               FontSize="14"
+                               VerticalAlignment="Center"/>
+                    <Button x:Name="CopyMemorySizeButton"
+                            Content="📋"
+                            FontSize="12"
+                            Margin="10,0,0,0"
+                            Padding="2,0"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Foreground="White"
+                            Click="CopyMemorySize_Click"
+                            ToolTip="Copy to clipboard"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,8">
+                    <TextBlock Text="Process: "
+                               Foreground="White"
+                               FontSize="14"
+                               VerticalAlignment="Center"/>
+                    <TextBlock x:Name="ProcessText"
+                               Foreground="White"
+                               FontSize="14"
+                               VerticalAlignment="Center"/>
+                    <Button x:Name="CopyProcessButton"
+                            Content="📋"
+                            FontSize="12"
+                            Margin="10,0,0,0"
+                            Padding="2,0"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Foreground="White"
+                            Click="CopyProcess_Click"
+                            ToolTip="Copy to clipboard"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>
