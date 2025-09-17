@@ -44,7 +44,7 @@ I highly encourage contributions to make it better. Here's how you can help:
 
 ### Reporting Issues
 - Found a version that isn't detected though it should? [Open an issue](../../issues/new)
-- Include the game version, file path, and any error messages
+- Please include the game version, any error messages and any other relevant informations.
 
 ## Requirements
 
