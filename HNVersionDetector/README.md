@@ -19,7 +19,7 @@ Feel free to make Pull Requests to the VersionDatabase.cs if you want to add new
 
 ---
 
-## 📥 Download & Installation 
+## Download & Installation 
 - [Latest Release](../../releases/latest)  
 You can download the pre-compiled version of the program here if you don't want to do it yourself. 
 
