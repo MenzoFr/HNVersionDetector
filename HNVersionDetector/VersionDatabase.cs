@@ -16,6 +16,7 @@ namespace HelloNeighborVersionDetector
                 ("HN1 Beta 2", "HelloNeighbor-Win64-Shipping.exe", 0x593EBFFB, 0x03618000),
                 ("HN1 Beta 3", "HelloNeighbor-Win64-Shipping.exe", 0x598E028B, 0x0362A000),
                 ("HN1 Pre Release", "HelloNeighbor-Win64-Shipping.exe", 0x5A01B12F, 0x03D9E000),
+                ("HN1 GOG Build", "HelloNeighbor-Win64-Shipping.exe", 0x5A2883E5, 0x03A42000),
                 ("HN1 32-bittest", "HelloNeighbor-Win32-Shipping.exe", 0x5A2972EB, 0x02DDA000),
                 ("HN1 1.0", "HelloNeighbor-Win64-Shipping.exe", 0x5A29D640, 0x040E2000),
                 ("HN1 1.1", "HelloNeighbor-Win64-Shipping.exe", 0x5A2C22B4, 0x04061000),
