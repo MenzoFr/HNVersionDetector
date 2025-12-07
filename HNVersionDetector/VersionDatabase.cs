@@ -33,6 +33,7 @@ namespace HelloNeighborVersionDetector
                 ("HN1 1.3", "HelloNeighbor-Win64-Shipping.exe", 0x5BFFF72A, 0x03543000),
                 ("HN1 1.3.1", "HelloNeighbor-Win64-Shipping.exe", 0x5C1F8F20, 0x03543000),
                 ("HN1 1.4", "HelloNeighbor-Win64-Shipping.exe", 0x5DB99258, 0x0351C000),
+                ("HN1 1.4.1", "HelloNeighbor-Win64-Shipping.exe", 0x5DDFB5B5, 0x0351E000),
             };
     }
 }
